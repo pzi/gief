@@ -5,7 +5,7 @@ const debug = process.env.NODE_ENV === 'development';
 const debugWindow = null;
 
 const mb = menubar({
-  // icon: __dirname + '/app/IconTemplate.png',
+  icon: __dirname + '/app/Icon.png',
   preloadWindow: true,
   dir: path.join(__dirname, 'app'),
   width: 240,
