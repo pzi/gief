@@ -1,0 +1,25 @@
+body {
+  margin: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+p {
+  margin-top: 0;
+}
+
+.gif img {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.tag {
+  background-color: skyblue;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  padding: 3px 5px;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "gief",
+  "version": "0.1.0",
+  "description": "All your favourite gifs",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "build": "electron-packager . Example --platform=darwin --arch=x64 --version=0.34.1 --icon=Icon.icns",
+    "start": "electron ."
+  },
+  "keywords": [
+    "gif",
+    "menubar"
+  ],
+  "author": "Patrik Affentranger",
+  "license": "WTFPL",
+  "dependencies": {
+    "menubar": "^2.3.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.1.0",
+    "electron-prebuilt": "^0.34.1"
+  }
+}
