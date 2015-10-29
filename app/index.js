@@ -1,11 +1,18 @@
 const fs = require('fs');
 const path = require('path');
+const clipboard = require('clipboard');
 
 function getGifs () {
   const file = path.join(__dirname, '../library.gifwit');
   dotGifwit = JSON.parse(fs.readFileSync(file, 'utf8'));
   return dotGifwit.images;
 };
+
+function writeGifUrlToClipBoard (event) {
+  event.preventDefault();
+  const clickedImage = event.target;
+  clipboard.writeText(clickedImage.src);
+}
 
 const body = document.querySelector('body');
 
@@ -19,6 +26,7 @@ for (var i = gifs.length - 1; i >= 0; i--) {
 
   var img = document.createElement('img');
   img.src = gif.url;
+  img.addEventListener('dblclick', writeGifUrlToClipBoard, false);
 
   var tags = document.createElement('p');
   tags.className = 'tags';
