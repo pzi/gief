@@ -20,10 +20,10 @@ mb.on('ready', () => {
 
   if (debug) {
     const debugWindow = new BrowserWindow({
-      width  : 995,
-      height : 600,
-      type   : 'desktop',
-      frame  : true
+      width: 995,
+      height: 600,
+      type: 'desktop',
+      frame: true
     });
     debugWindow.openDevTools();
     debugWindow.loadUrl('file://' + __dirname + '/app/index.html');
