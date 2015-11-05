@@ -1,6 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const clipboard = require('clipboard');
+const remote = require('remote');
+const Menu = remote.require('menu');
+const MenuItem = remote.require('menu-item');
+
+const currentWindow = remote.getCurrentWindow();
 
 function getGifs () {
   const file = path.join(__dirname, '../library.gifwit');
@@ -8,10 +13,26 @@ function getGifs () {
   return dotGifwit.images;
 };
 
-function writeGifUrlToClipBoard (event) {
+function writeImageUrlToClipBoard (event) {
   event.preventDefault();
   const clickedImage = event.target;
   clipboard.writeText(clickedImage.src);
+	currentWindow.hide();
+}
+
+function openImageContextMenu (event) {
+	event.preventDefault();
+	const menu = new Menu();
+	menu.append(
+		new MenuItem({
+			label: 'Copy URL',
+			accelerator: 'Command+C',
+			click: () => {
+				writeImageUrlToClipBoard(event);
+			}
+		})
+	);
+	menu.popup(currentWindow);
 }
 
 const body = document.querySelector('body');
@@ -26,7 +47,8 @@ for (var i = gifs.length - 1; i >= 0; i--) {
 
   var img = document.createElement('img');
   img.src = gif.url;
-  img.addEventListener('dblclick', writeGifUrlToClipBoard, false);
+  img.addEventListener('dblclick', writeImageUrlToClipBoard);
+  img.addEventListener('contextmenu', openImageContextMenu);
 
   var tags = document.createElement('p');
   tags.className = 'tags';
@@ -42,4 +64,3 @@ for (var i = gifs.length - 1; i >= 0; i--) {
   gifWrapper.appendChild(tags);
   body.appendChild(gifWrapper);
 };
-
