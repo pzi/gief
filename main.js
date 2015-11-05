@@ -3,6 +3,7 @@ const BrowserWindow = require('browser-window');
 const path = require('path');
 const debug = process.env.NODE_ENV === 'development';
 const debugWindow = null;
+const Menu = require('menu');
 
 const mb = menubar({
   icon: __dirname + '/app/Icon.png',
@@ -14,6 +15,9 @@ const mb = menubar({
 });
 
 mb.on('ready', () => {
+
+  Menu.setApplicationMenu(require('./lib/menu'));
+
   if (debug) {
     const debugWindow = new BrowserWindow({
       width  : 995,
@@ -24,4 +28,5 @@ mb.on('ready', () => {
     debugWindow.openDevTools();
     debugWindow.loadUrl('file://' + __dirname + '/app/index.html');
   }
+
 });
