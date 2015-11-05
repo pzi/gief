@@ -29,4 +29,8 @@ mb.on('ready', () => {
     debugWindow.loadUrl('file://' + __dirname + '/app/index.html');
   }
 
+  mb.on('hide', () => {
+    mb.window.webContents.send('window-blur');
+  });
+
 });

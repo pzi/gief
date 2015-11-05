@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const clipboard = require('clipboard');
+const ipc = require('ipc');
 const remote = require('remote');
 const Menu = remote.require('menu');
 const MenuItem = remote.require('menu-item');
@@ -20,12 +21,10 @@ function writeImageUrlToClipBoard (event) {
   const clickedImage = event.target;
   clipboard.writeText(clickedImage.src);
   currentWindow.hide();
-  deselectAllImageContainers();
 }
 
 function openImageContextMenu (event) {
   event.preventDefault();
-  deselectAllImageContainers();
   selectImage(event);
 
   const menu = new Menu();
@@ -92,3 +91,7 @@ for (var i = images.length - 1; i >= 0; i--) {
   imageContainer.appendChild(tags);
   body.appendChild(imageContainer);
 };
+
+ipc.on('window-blur', function () {
+  deselectAllImageContainers();
+});
