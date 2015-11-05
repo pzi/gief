@@ -1,17 +1,29 @@
 body {
-  margin: 10px;
+  margin: 0;
   font-family: Arial, sans-serif;
   font-size: 14px;
 }
 
 p {
-  margin-top: 0;
+  margin-top: 0;z
 }
 
-.gif img {
+.image-container {
+  padding: 10px;
+}
+
+.image-container.is-selected {
+  background-color: lightblue;
+}
+
+.image-container img {
   display: block;
   margin-bottom: 5px;
   width: 100%;
+}
+
+.tags {
+  margin-bottom: 0;
 }
 
 .tag {
