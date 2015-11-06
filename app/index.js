@@ -94,7 +94,7 @@ for (var i = images.length - 1; i >= 0; i--) {
     var tag = document.createElement('span');
     tag.className = 'tag';
     tag.innerHTML = keywordsArr[y];
-    tags.appendChild(tag);
+    if (tag.innerHTML.length > 1) tags.appendChild(tag);
   };
 
   imageContainer.appendChild(link);
