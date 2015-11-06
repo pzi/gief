@@ -6,7 +6,7 @@ const debugWindow = null;
 const Menu = require('menu');
 
 const mb = menubar({
-  icon: __dirname + '/app/Icon.png',
+  icon: __dirname + '/app/IconTemplate.png',
   preloadWindow: true,
   dir: path.join(__dirname, 'app'),
   width: 240,
