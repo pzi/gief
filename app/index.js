@@ -102,7 +102,7 @@ for (var i = images.length - 1; i >= 0; i--) {
   body.appendChild(imageContainer);
 };
 
-body.addEventListener('keyup', (event) => {
+document.addEventListener('keydown', (event) => {
   const upArrow = 38;
   const downArrow = 40;
   var currentSelection = document.querySelector('.image-container.is-selected');
