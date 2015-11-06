@@ -43,13 +43,23 @@ function openImageContextMenu (event) {
   }, 10);
 }
 
-function selectImage (event) {
-  event.preventDefault();
-  deselectAllImageContainers();
+function selectImage (target) {
+  var imageContainer = '';
+  var isEvent = target instanceof Event;
 
-  var imageContainer = event.currentTarget.parentElement;
+  if (isEvent) {
+    var event = target;
+    event.preventDefault();
+    imageContainer = event.currentTarget.parentElement;
+  } else {
+    imageContainer = target;
+  }
+
+  imageContainer ? deselectAllImageContainers() : false;
+
   if (!imageContainer.classList.contains('is-selected')) {
     imageContainer.classList.add('is-selected');
+    imageContainer.scrollIntoViewIfNeeded();
   }
 }
 
@@ -91,6 +101,23 @@ for (var i = images.length - 1; i >= 0; i--) {
   imageContainer.appendChild(tags);
   body.appendChild(imageContainer);
 };
+
+body.addEventListener('keyup', (event) => {
+  const upArrow = 38;
+  const downArrow = 40;
+  var currentSelection = document.querySelector('.image-container.is-selected');
+
+  if (currentSelection) {
+    event.preventDefault();
+    if (event.keyCode === upArrow) {
+      if (currentSelection.previousSibling.matches('.image-container'))
+        selectImage(currentSelection.previousSibling);
+    } else if (event.keyCode === downArrow) {
+      if (currentSelection.nextSibling.matches('.image-container'))
+        selectImage(currentSelection.nextSibling);
+    }
+  }
+}, true);
 
 ipc.on('window-blur', function () {
   deselectAllImageContainers();
