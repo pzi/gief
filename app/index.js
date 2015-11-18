@@ -122,3 +122,9 @@ document.addEventListener('keydown', (event) => {
 ipcRenderer.on('window-blur', function () {
   deselectAllImageContainers();
 });
+
+ipcRenderer.on('GlobalShortcuts', function (event, accelerator) {
+  // TODO: Switch to handle different accelerators
+  const selectedImageContainer = document.querySelector('.is-selected');
+  clipboard.writeText(selectedImageContainer.getElementsByTagName('img')[0].src);
+});

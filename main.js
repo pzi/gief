@@ -4,6 +4,24 @@ const path = require('path');
 const debug = process.env.NODE_ENV === 'development';
 const debugWindow = null;
 const Menu = require('menu');
+const globalShortcut = require('global-shortcut');
+
+function registerGlobalShortCut (accelerator) {
+  var ret = globalShortcut.register(accelerator, () => {
+    if (debug) {
+      console.log(`${accelerator} is pressed`);
+    }
+    mb.window.webContents.send('GlobalShortcuts', accelerator);
+  });
+
+  if (debug) {
+    if (!ret) {
+      console.log(`Registration of ${accelerator} failed`);
+    }
+    // Check whether a shortcut is registered.
+    console.log('Registered:' + globalShortcut.isRegistered(accelerator));
+  }
+}
 
 const mb = menubar({
   icon: __dirname + '/app/IconTemplate.png',
@@ -29,8 +47,17 @@ mb.on('ready', () => {
     debugWindow.loadURL('file://' + __dirname + '/app/index.html');
   }
 
-  mb.on('hide', () => {
-    mb.window.webContents.send('window-blur');
+  mb.on('show', () => {
+    registerGlobalShortCut('Command+C');
   });
 
+  mb.on('hide', () => {
+    mb.window.webContents.send('window-blur');
+    globalShortcut.unregisterAll();
+  });
+
+});
+
+mb.app.on('will-quit', function () {
+  globalShortcut.unregisterAll();
 });
