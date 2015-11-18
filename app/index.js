@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const clipboard = require('clipboard');
-const ipc = require('ipc');
+const ipcRenderer = require('ipc-renderer');
 const remote = require('remote');
 const Menu = remote.require('menu');
 const MenuItem = remote.require('menu-item');
@@ -119,6 +119,6 @@ document.addEventListener('keydown', (event) => {
   }
 }, true);
 
-ipc.on('window-blur', function () {
+ipcRenderer.on('window-blur', function () {
   deselectAllImageContainers();
 });

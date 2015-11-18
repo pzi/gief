@@ -26,7 +26,7 @@ mb.on('ready', () => {
       frame: true
     });
     debugWindow.openDevTools();
-    debugWindow.loadUrl('file://' + __dirname + '/app/index.html');
+    debugWindow.loadURL('file://' + __dirname + '/app/index.html');
   }
 
   mb.on('hide', () => {
