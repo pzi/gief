@@ -27,11 +27,11 @@ p {
 }
 
 .tag {
-  background-color: skyblue;
+  border: 1px solid steelblue;
   border-radius: 3px;
-  color: #555;
+  color: steelblue;
   display: inline-block;
-  margin-bottom: 2px;
-  margin-right: 2px;
+  margin-bottom: 3px;
+  margin-right: 3px;
   padding: 3px 5px;
 }
