@@ -5,9 +5,11 @@ const ipcRenderer = require('ipc-renderer');
 const remote = require('remote');
 const Menu = remote.require('menu');
 const MenuItem = remote.require('menu-item');
+const search = require('./search.js');
 
 const currentWindow = remote.getCurrentWindow();
 const body = document.querySelector('body');
+const searchInput = document.getElementById('search');
 const images = getImages();
 
 function getImages () {
@@ -118,6 +120,12 @@ document.addEventListener('keydown', (event) => {
     }
   }
 }, true);
+
+searchInput.addEventListener('input', (event) => {
+  if (event.target.value.length > 1) {
+    search(event.target.value, images);
+  }
+});
 
 ipcRenderer.on('window-blur', function () {
   deselectAllImageContainers();
