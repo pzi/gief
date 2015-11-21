@@ -18,7 +18,7 @@ p {
 input[type='search'] {
   border-bottom-color: #f2f2f2;
   border-width: 0 0 1px;
-  box-shadow: 0 0 1px #c6c6c6;
+  box-shadow: 0 0 4px 2px #c6c6c6;
   font-size: 12px;
   padding: 8px;
   width: 100%;

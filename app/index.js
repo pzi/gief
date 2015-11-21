@@ -20,10 +20,7 @@ function getImages () {
   return dotGifwit.images;
 };
 
-for (var i = 0; i < images.length; i++) {
-  var image = images[i];
-  imageContainer.addNew(image);
-};
+imageContainer.addAll(images);
 
 document.addEventListener('keydown', (event) => {
   const upArrow = 38;
