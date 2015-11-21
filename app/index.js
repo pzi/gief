@@ -12,6 +12,7 @@ const imagesWrapper = document.getElementById('images');
 const imageContainer = new ImageContainer(imagesWrapper);
 const searchInput = document.getElementById('search');
 const images = getImages();
+const debounce = require('debounce');
 
 function getImages () {
   const file = path.join(__dirname, '../library.gifwit');
@@ -45,11 +46,9 @@ document.addEventListener('keydown', (event) => {
   }
 }, true);
 
-searchInput.addEventListener('input', (event) => {
-  if (event.target.value.length > 1) {
-    search(event.target.value, images);
-  }
-});
+searchInput.addEventListener('input', debounce((event) => {
+  search(event.target.value, images);
+}, 300));
 
 ipcRenderer.on('window-blur', function () {
   imageContainer.deselectAll();

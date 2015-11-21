@@ -29,6 +29,7 @@
   ],
   "license": "WTFPL",
   "dependencies": {
+    "debounce": "^1.0.0",
     "menubar": "^2.3.0"
   },
   "devDependencies": {
