@@ -7,6 +7,20 @@ function ImageContainer(wrapper) {
   this.wrapper = wrapper;
 }
 
+ImageContainer.prototype.addAll = function (images) {
+  const self = this;
+  for (var i = 0; i < images.length; i++) {
+    var image = images[i];
+    self.addNew(image);
+  };
+};
+
+ImageContainer.prototype.removeAll = function () {
+  while (this.wrapper.firstChild) {
+    this.wrapper.removeChild(this.wrapper.firstChild);
+  }
+};
+
 ImageContainer.prototype.addNew = function (image) {
   // create the container
   const imageContainer = document.createElement('div');
