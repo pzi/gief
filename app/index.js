@@ -52,6 +52,8 @@ searchInput.addEventListener('input', debounce((event) => {
 
 ipcRenderer.on('window-blur', function () {
   imageContainer.deselectAll();
+  imageContainer.removeAll();
+  imageContainer.addAll(images);
 });
 
 ipcRenderer.on('GlobalShortcuts', function (event, accelerator) {
