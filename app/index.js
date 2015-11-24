@@ -26,8 +26,9 @@ document.addEventListener('keydown', (event) => {
   const upArrow = 38;
   const downArrow = 40;
   var currentSelection = imagesWrapper.querySelector('.image-container.is-selected');
+  var targetIsSearchInput = event.target === searchInput;
 
-  if (currentSelection) {
+  if (currentSelection && !targetIsSearchInput) {
     event.preventDefault();
     if (event.keyCode === upArrow) {
       var previousContainer = currentSelection.previousSibling;
