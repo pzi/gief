@@ -48,7 +48,7 @@ mb.on('ready', () => {
   }
 
   mb.on('show', () => {
-    registerGlobalShortCut('Command+C');
+    registerGlobalShortCut('CmdOrCtrl+C');
   });
 
   mb.on('hide', () => {

@@ -110,7 +110,8 @@ ImageContainer.prototype.openImageContextMenu = function (event) {
   menu.append(
     new MenuItem({
       label: 'Copy URL',
-      accelerator: 'Command+C',
+      accelerator: 'CmdOrCtrl+C',
+      role: 'copy',
       click: () => {
         self.copyImgUrlToClipboard(event);
       }
