@@ -1,25 +1,28 @@
+const electron = require('electron');
+const BrowserWindow = electron.BrowserWindow;
+const globalShortcut = electron.globalShortcut;
 const menubar = require('menubar');
-const BrowserWindow = require('browser-window');
 const path = require('path');
-const debug = process.env.NODE_ENV === 'development';
-const debugWindow = null;
 const Menu = require('menu');
-const globalShortcut = require('global-shortcut');
+const debug = (process.env.NODE_ENV === 'development');
+const pkg = require('./package.json');
 
-function registerGlobalShortCut (accelerator) {
-  var ret = globalShortcut.register(accelerator, () => {
+function registerGlobalShortCut (shortcut) {
+  const ret = globalShortcut.register(shortcut, () => {
     if (debug) {
-      console.log(`${accelerator} is pressed`);
+      console.log(`${shortcut} is pressed`);
     }
-    mb.window.webContents.send('GlobalShortcuts', accelerator);
+    mb.window.webContents.send('GlobalShortcuts', shortcut);
   });
 
   if (debug) {
     if (!ret) {
-      console.log(`Registration of ${accelerator} failed`);
+      console.warn(`Registration of ${shortcut} failed.`);
     }
     // Check whether a shortcut is registered.
-    console.log('Registered:' + globalShortcut.isRegistered(accelerator));
+    if (globalShortcut.isRegistered(shortcut)) {
+      console.log(`${shortcut} was registered.`);
+    }
   }
 }
 
@@ -29,22 +32,22 @@ const mb = menubar({
   dir: path.join(__dirname, 'app'),
   width: 240,
   height: 500,
-  resizable: false
+  resizable: false,
+  'show-dock-icon': debug,
+  tooltip: `${pkg.productName} ${pkg.version}`
 });
 
 mb.on('ready', () => {
-
   Menu.setApplicationMenu(require('./lib/menu'));
 
   if (debug) {
     const debugWindow = new BrowserWindow({
       width: 995,
       height: 600,
-      type: 'desktop',
-      frame: true
+      title: 'Gief - Debug'
     });
-    debugWindow.openDevTools();
     debugWindow.loadURL('file://' + __dirname + '/app/index.html');
+    debugWindow.openDevTools();
   }
 
   mb.on('show', () => {
@@ -55,9 +58,8 @@ mb.on('ready', () => {
     mb.window.webContents.send('window-blur');
     globalShortcut.unregisterAll();
   });
-
 });
 
-mb.app.on('will-quit', function () {
+mb.app.on('will-quit', () => {
   globalShortcut.unregisterAll();
 });
