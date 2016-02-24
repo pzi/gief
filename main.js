@@ -1,18 +1,19 @@
+const debug = (process.env.NODE_ENV === 'development');
 const electron = require('electron');
 const BrowserWindow = electron.BrowserWindow;
 const globalShortcut = electron.globalShortcut;
 const menubar = require('menubar');
 const path = require('path');
 const Menu = require('menu');
-const debug = (process.env.NODE_ENV === 'development');
 const registerGlobalShortcut = require('./lib/registerGlobalShortcut');
 const pkg = require('./package.json');
 
+const appPath = path.join(__dirname, 'app');
 
 const mb = menubar({
-  icon: __dirname + '/app/IconTemplate.png',
+  icon: `${appPath}/IconTemplate.png`,
   preloadWindow: true,
-  dir: path.join(__dirname, 'app'),
+  dir: appPath,
   width: 240,
   height: 500,
   resizable: false,
@@ -26,10 +27,9 @@ mb.on('ready', () => {
   if (debug) {
     const debugWindow = new BrowserWindow({
       width: 995,
-      height: 600,
-      title: 'Gief - Debug'
+      height: 600
     });
-    debugWindow.loadURL('file://' + __dirname + '/app/index.html');
+    debugWindow.loadURL(`file://${appPath}/index.html`);
     debugWindow.openDevTools();
   }
 
