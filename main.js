@@ -5,26 +5,9 @@ const menubar = require('menubar');
 const path = require('path');
 const Menu = require('menu');
 const debug = (process.env.NODE_ENV === 'development');
+const registerGlobalShortcut = require('./lib/registerGlobalShortcut');
 const pkg = require('./package.json');
 
-function registerGlobalShortCut (shortcut) {
-  const ret = globalShortcut.register(shortcut, () => {
-    if (debug) {
-      console.log(`${shortcut} is pressed`);
-    }
-    mb.window.webContents.send('GlobalShortcuts', shortcut);
-  });
-
-  if (debug) {
-    if (!ret) {
-      console.warn(`Registration of ${shortcut} failed.`);
-    }
-    // Check whether a shortcut is registered.
-    if (globalShortcut.isRegistered(shortcut)) {
-      console.log(`${shortcut} was registered.`);
-    }
-  }
-}
 
 const mb = menubar({
   icon: __dirname + '/app/IconTemplate.png',
@@ -51,7 +34,7 @@ mb.on('ready', () => {
   }
 
   mb.on('show', () => {
-    registerGlobalShortCut('CmdOrCtrl+C');
+    registerGlobalShortcut('CmdOrCtrl+C', mb);
   });
 
   mb.on('hide', () => {
