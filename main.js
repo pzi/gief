@@ -35,6 +35,7 @@ mb.on('ready', () => {
 
   mb.on('show', () => {
     registerGlobalShortcut('CmdOrCtrl+C', mb);
+    registerGlobalShortcut('CmdOrCtrl+F', mb);
   });
 
   mb.on('hide', () => {

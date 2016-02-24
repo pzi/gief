@@ -54,8 +54,12 @@ ipcRenderer.on('window-blur', function () {
   imageContainer.addAll(images);
 });
 
-ipcRenderer.on('GlobalShortcuts', function (event, accelerator) {
-  // TODO: Switch to handle different accelerators
-  const selectedImageContainer = imagesWrapper.querySelector('.is-selected');
-  clipboard.writeText(selectedImageContainer.getElementsByTagName('img')[0].src);
+ipcRenderer.on('GlobalShortcuts', function (event, shortcut) {
+  switch (shortcut) {
+    case 'CmdOrCtrl+C':
+      const selectedImageContainer = imagesWrapper.querySelector('.is-selected');
+      clipboard.writeText(selectedImageContainer.getElementsByTagName('img')[0].src);
+    case 'CmdOrCtrl+F':
+      searchInput.focus();
+  }
 });
