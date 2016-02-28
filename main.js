@@ -1,5 +1,7 @@
 const debug = (process.env.NODE_ENV === 'development');
 const electron = require('electron');
+const app = electron.app;
+app.commandLine.appendSwitch('js-flags', '--harmony');
 const BrowserWindow = electron.BrowserWindow;
 const globalShortcut = electron.globalShortcut;
 const menubar = require('menubar');

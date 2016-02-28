@@ -9,7 +9,7 @@
     "url": "http://patrikaffentranger.me"
   },
   "engines": {
-    "node": "4.2.1"
+    "node": ">=4.2.1"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "private": true,
   "scripts": {
     "build": "electron-packager . Gief --platform=darwin --arch=x64 --version=0.36.8 --icon=Icon.icns",
-    "start": "electron ."
+    "start": "electron --js-flags=\"--harmony\" ."
   },
   "keywords": [
     "gif",
