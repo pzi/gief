@@ -30,7 +30,7 @@
   "license": "WTFPL",
   "dependencies": {
     "debounce": "^1.0.0",
-    "menubar": "^4.0.2"
+    "menubar": "^4.1.1"
   },
   "devDependencies": {
     "electron-packager": "^5.1.0",
