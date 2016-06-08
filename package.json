@@ -20,7 +20,7 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "build": "electron-packager . Gief --platform=darwin --arch=x64 --version=0.36.8 --icon=Icon.icns",
+    "build": "electron-packager . Gief --platform=darwin --arch=x64 --version=1.2.2 --icon=Icon.icns",
     "start": "electron --js-flags=\"--harmony\" ."
   },
   "keywords": [
@@ -30,10 +30,10 @@
   "license": "WTFPL",
   "dependencies": {
     "debounce": "^1.0.0",
-    "menubar": "^4.0.2"
+    "menubar": "^4.1.1"
   },
   "devDependencies": {
-    "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.36.8"
+    "electron-packager": "^7.0.3",
+    "electron-prebuilt": "^1.2.2"
   }
 }

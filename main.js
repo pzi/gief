@@ -1,14 +1,20 @@
 const debug = (process.env.NODE_ENV === 'development');
 const electron = require('electron');
-const app = electron.app;
+// Module to control application life.
+const {app} = electron;
 app.commandLine.appendSwitch('js-flags', '--harmony');
-const BrowserWindow = electron.BrowserWindow;
-const globalShortcut = electron.globalShortcut;
-const menubar = require('menubar');
+// Module to create native browser window.
+const {BrowserWindow} = electron;
+// Module to register/unregister global OS keyboard shortcuts
+const {globalShortcut} = electron;
+// Module to create native menus and context menus
+const {Menu} = electron;
+
 const path = require('path');
-const Menu = require('menu');
-const registerGlobalShortcut = require('./lib/registerGlobalShortcut');
+const menubar = require('menubar');
+
 const pkg = require('./package.json');
+const registerGlobalShortcut = require('./lib/registerGlobalShortcut');
 
 const appPath = path.join(__dirname, 'app');
 

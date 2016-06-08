@@ -1,6 +1,6 @@
 const remote = require('electron').remote;
-const Menu = remote.Menu;
-const MenuItem = remote.MenuItem;
+const {Menu} = remote;
+const {MenuItem} = remote;
 const currentWindow = remote.getCurrentWindow();
 
 // Constructor
@@ -11,8 +11,7 @@ class ImageContainer {
   }
 
   addAll (images) {
-    // for (var i = 0; i < images.length; i++) {
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < images.length; i++) {
       var image = images[i];
       this.addNew(image);
     };
