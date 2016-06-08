@@ -2,6 +2,9 @@
 
 > All your favourite gifs in the menu bar!
 
+[![Travis Build Status](https://travis-ci.org/pzi/gief.svg?branch=master)](https://travis-ci.org/pzi/gief)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
+
 ## General Information
 
 * [Electron](http://electron.atom.io)
