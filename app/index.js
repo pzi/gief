@@ -1,19 +1,18 @@
 const fs = require('fs');
 const path = require('path');
+const debounce = require('debounce');
 const electron = require('electron');
 const clipboard = electron.clipboard;
 const ipcRenderer = electron.ipcRenderer;
 const remote = electron.remote;
-const currentWindow = remote.getCurrentWindow();
 const search = require('./search.js');
 const ImageContainer = require('./image-container.js');
 
 const imagesWrapper = document.getElementById('images');
 const imageContainer = new ImageContainer(imagesWrapper);
 const searchInput = document.getElementById('search');
-const images = getImages();
-const debounce = require('debounce');
 
+const images = getImages();
 function getImages () {
   const file = path.join(__dirname, '../library.gifwit');
   dotGifwit = JSON.parse(fs.readFileSync(file, 'utf8'));
