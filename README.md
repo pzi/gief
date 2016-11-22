@@ -10,6 +10,8 @@
 * [Electron](http://electron.atom.io)
 * [menubar](https://github.com/maxogden/menubar)
 
+**Note:** The app currently requires a `library.gifwit` file in the project root directory to work. Grab [my library file](http://gifs.pzi.io/library.gifwit) that was generated from [my gif storage](https://github.com/pzi/gifs).
+
 ## Development
 
 ```
