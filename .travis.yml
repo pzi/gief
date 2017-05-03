@@ -1,3 +1,4 @@
 language: node_js
 install:
   - nvm install 7
+  - yarn
