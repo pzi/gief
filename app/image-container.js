@@ -69,6 +69,7 @@ class ImageContainer {
     let imageContainer = ''
     // select is called from mouseclick or when keyboard up/down arrows are pressed
     const isEvent = target.currentTarget || false
+
     if (isEvent) {
       const event = target
       event.preventDefault()
@@ -77,7 +78,9 @@ class ImageContainer {
       imageContainer = target
     }
 
-    imageContainer ? this.deselectAll() : false
+    if (imageContainer) {
+      this.deselectAll()
+    }
 
     if (imageContainer.classList.contains('is-selected') !== true) {
       imageContainer.classList.add('is-selected')
@@ -87,6 +90,7 @@ class ImageContainer {
 
   deselectAll (image) {
     const imageContainers = this.wrapper.querySelectorAll('.image-container.is-selected')
+
     for (let i = imageContainers.length - 1; i >= 0; i--) {
       imageContainers[i].classList.remove('is-selected')
     }
@@ -103,6 +107,7 @@ class ImageContainer {
     this.select(event)
     const self = this
     const menu = new Menu()
+
     menu.append(
       new MenuItem({
         label: 'Copy URL',
@@ -112,6 +117,7 @@ class ImageContainer {
         }
       })
     )
+
     setTimeout(() => {
       menu.popup(currentWindow)
     }, 10)
