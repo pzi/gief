@@ -1,5 +1,7 @@
 # Gief!
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/pzi/gief.svg)](https://greenkeeper.io/)
+
 > All your favourite gifs in the menu bar!
 
 [![Travis Build Status](https://travis-ci.org/pzi/gief.svg?branch=master)](https://travis-ci.org/pzi/gief)
