@@ -17,7 +17,7 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "build": "electron-packager . --out=_dist --platform=darwin --arch=x64 ----electron-version=1.6.6 --icon=Icon.icns --overwrite",
+    "build": "electron-packager . --out=_dist --platform=darwin --arch=x64 ----electron-version=1.8.3 --icon=TempIcon.icns --overwrite --no-prune",
     "start": "electron --js-flags=\"--harmony\" .",
     "test": "standard"
   },
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "electron": "^1.8.3",
-    "electron-packager": "^8.7.0",
+    "electron-packager": "^11.1.0",
     "standard": "^11.0.0"
   }
 }
