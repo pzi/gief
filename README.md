@@ -9,6 +9,7 @@
 ## General Information
 
 * [Electron](http://electron.atom.io)
+* [electron-packager](https://github.com/electron-userland/electron-packager)
 * [menubar](https://github.com/maxogden/menubar)
 
 **Note:** The app currently requires a `library.gifwit` file in the project root directory to work. Grab [my library file](http://gifs.pzi.io/library.gifwit) that was generated from [my gif storage](https://github.com/pzi/gifs).
@@ -16,24 +17,24 @@
 ## Development
 
 ```
-$ npm install
+$ yarn install
 ```
 
 ### Run
 
 ```
-$ npm start
+$ yarn start
 ```
 
-**Optional:** `NODE_ENV=development npm start` for a big debug window.
+**Optional:** `NODE_ENV=development yarn start` for a big debug window.
 
 ### Build
 
 ```
-$ npm run build
+$ yarn run build
 ```
 
-Builds the app for OSX [electron-packager](https://github.com/maxogden/electron-packager).
+Builds the app for OSX by default.
 
 
 ## License
