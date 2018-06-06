@@ -2,8 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const debounce = require('debounce')
 const electron = require('electron')
-const {clipboard} = electron
-const {ipcRenderer} = electron
+const { clipboard } = electron
+const { ipcRenderer } = electron
 const search = require('./search.js')
 const ImageContainer = require('./image-container.js')
 
@@ -12,6 +12,7 @@ const imageContainer = new ImageContainer(imagesWrapper)
 const searchInput = document.getElementById('search')
 
 const images = getImages()
+
 function getImages () {
   const file = path.join(__dirname, '../library.gifwit')
   const dotGifwit = JSON.parse(fs.readFileSync(file, 'utf8'))
@@ -20,39 +21,46 @@ function getImages () {
 
 imageContainer.addAll(images)
 
-document.addEventListener('keydown', (event) => {
-  const upArrow = 38
-  const downArrow = 40
-  var currentSelection = imagesWrapper.querySelector('.image-container.is-selected')
-  var targetIsSearchInput = event.target === searchInput
+document.addEventListener(
+  'keydown',
+  (event) => {
+    const upArrow = 38
+    const downArrow = 40
+    const currentSelection = imagesWrapper.querySelector('.image-container.is-selected')
+    const targetIsSearchInput = event.target === searchInput
 
-  if (currentSelection && !targetIsSearchInput) {
-    event.preventDefault()
-    if (event.keyCode === upArrow) {
-      var previousContainer = currentSelection.previousSibling
-      if (previousContainer && previousContainer.matches('.image-container')) {
-        imageContainer.select(previousContainer)
-      }
-    } else if (event.keyCode === downArrow) {
-      var nextContainer = currentSelection.nextSibling
-      if (nextContainer && nextContainer.matches('.image-container')) {
-        imageContainer.select(nextContainer)
+    if (currentSelection && !targetIsSearchInput) {
+      event.preventDefault()
+      if (event.keyCode === upArrow) {
+        const previousContainer = currentSelection.previousSibling
+        if (previousContainer && previousContainer.matches('.image-container')) {
+          imageContainer.select(previousContainer)
+        }
+      } else if (event.keyCode === downArrow) {
+        const nextContainer = currentSelection.nextSibling
+        if (nextContainer && nextContainer.matches('.image-container')) {
+          imageContainer.select(nextContainer)
+        }
       }
     }
-  }
-}, true)
+  },
+  true
+)
 
-searchInput.addEventListener('input', debounce((event) => {
-  search(event.target.value, images, imageContainer, imagesWrapper)
-}, 300))
+searchInput.addEventListener(
+  'input',
+  debounce((event) => {
+    search(event.target.value, images, imageContainer, imagesWrapper)
+  }, 300)
+)
 
-ipcRenderer.on('window-blur', function () {
+ipcRenderer.on('window-blur', () => {
   imageContainer.deselectAll()
   imageContainer.removeAll()
   imageContainer.addAll(images)
 })
 
-ipcRenderer.on('GlobalShortcuts', function (event, shortcut) {
+ipcRenderer.on('GlobalShortcuts', (event, shortcut) => {
   switch (shortcut) {
     case 'CmdOrCtrl+C':
       const selectedImageContainer = imagesWrapper.querySelector('.is-selected')

@@ -1,5 +1,5 @@
 const remote = require('electron').remote
-const {Menu, MenuItem, clipboard} = remote
+const { Menu, MenuItem, clipboard } = remote
 const currentWindow = remote.getCurrentWindow()
 
 // Constructor
@@ -10,9 +10,8 @@ class ImageContainer {
   }
 
   addAll (images) {
-    for (var i = 0; i < images.length; i++) {
-      var image = images[i]
-      this.addNew(image)
+    for (let i = 0; i < images.length; i++) {
+      this.addNew(images[i])
     }
   }
 
@@ -53,7 +52,7 @@ class ImageContainer {
     keywords.forEach((keyword) => {
       // only use keywords that are longer than 1 character
       if (keyword.length > 1) {
-        var tag = document.createElement('span')
+        const tag = document.createElement('span')
         tag.className = 'tag'
         tag.innerHTML = keyword
         tags.appendChild(tag)
