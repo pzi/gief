@@ -17,7 +17,7 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "build:base": "electron-packager . --out=_dist --arch=x64 ----electron-version=1.8.3 --overwrite --no-prune",
+    "build:base": "electron-packager . --out=_dist --arch=x64 ----electron-version=4.0.5 --overwrite --no-prune",
     "build:mac": "yarn run build:base --platform=darwin --icon=TempIcon.icns",
     "build:win": "yarn run build:base --platform=win32",
     "build": "yarn run build:mac && yarn run build:win",
@@ -34,7 +34,7 @@
     "menubar": "^5.2.3"
   },
   "devDependencies": {
-    "electron": "^3.0.0",
+    "electron": "^4.0.0",
     "electron-packager": "^12.0.0",
     "standard": "^12.0.0"
   },
