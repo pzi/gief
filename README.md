@@ -16,13 +16,13 @@
 
 ## Development
 
-```
+```bash
 $ yarn install
 ```
 
 ### Run
 
-```
+```bash
 $ yarn start
 ```
 
@@ -30,11 +30,19 @@ $ yarn start
 
 ### Build
 
-```
+```bash
 $ yarn run build
 ```
 
-Builds the app for OSX by default.
+Builds a 64bit app for Windows and macOS by default. Alternatively use: `build:win` or `build:mac`.
+
+### Test
+
+```bash
+$ yarn run test
+```
+
+Currently only runs [standard](https://github.com/standard/standard) to lint the JS.
 
 
 ## License
