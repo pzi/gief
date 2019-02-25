@@ -17,7 +17,10 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "build": "electron-packager . --out=_dist --platform=darwin --arch=x64 ----electron-version=1.8.3 --icon=TempIcon.icns --overwrite --no-prune",
+    "build:base": "electron-packager . --out=_dist --arch=x64 ----electron-version=1.8.3 --overwrite --no-prune",
+    "build:mac": "yarn run build:base --platform=darwin --icon=TempIcon.icns",
+    "build:win": "yarn run build:base --platform=win32",
+    "build": "yarn run build:mac && yarn run build:win",
     "start": "electron --js-flags=\"--harmony\" .",
     "test": "standard"
   },
