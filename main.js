@@ -11,7 +11,7 @@ const { globalShortcut } = electron
 const { Menu } = electron
 
 const path = require('path')
-const menubar = require('menubar')
+const { menubar } = require('menubar')
 
 const pkg = require('./package.json')
 const registerGlobalShortcut = require('./lib/registerGlobalShortcut')
@@ -22,8 +22,10 @@ const mb = menubar({
   icon: `${appPath}/IconTemplate.png`,
   preloadWindow: true,
   dir: appPath,
-  width: 240,
-  height: 500,
+  browserWindow: {
+    width: 240,
+    height: 500
+  },
   resizable: false,
   'show-dock-icon': debug,
   tooltip: `${pkg.productName} ${pkg.version}`
