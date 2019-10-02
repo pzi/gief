@@ -63,8 +63,9 @@ ipcRenderer.on('window-blur', () => {
 ipcRenderer.on('GlobalShortcuts', (event, shortcut) => {
   switch (shortcut) {
     case 'CmdOrCtrl+C':
-      const selectedImageContainer = imagesWrapper.querySelector('.is-selected')
-      clipboard.writeText(selectedImageContainer.getElementsByTagName('img')[0].src)
+      clipboard.writeText(
+        imagesWrapper.querySelector('.is-selected').getElementsByTagName('img')[0].src
+      )
       break
     case 'CmdOrCtrl+F':
       searchInput.focus()
