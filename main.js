@@ -1,17 +1,9 @@
 const debug = process.env.NODE_ENV === 'development'
-const electron = require('electron')
-// Module to control application life.
-const { app } = electron
+const { app, BrowserWindow, globalShortcut, Menu } = require('electron')
 app.commandLine.appendSwitch('js-flags', '--harmony')
-// Module to create native browser window.
-const { BrowserWindow } = electron
-// Module to register/unregister global OS keyboard shortcuts
-const { globalShortcut } = electron
-// Module to create native menus and context menus
-const { Menu } = electron
 
 const path = require('path')
-const menubar = require('menubar')
+const { menubar } = require('menubar')
 
 const pkg = require('./package.json')
 const registerGlobalShortcut = require('./lib/registerGlobalShortcut')
@@ -22,8 +14,14 @@ const mb = menubar({
   icon: `${appPath}/IconTemplate.png`,
   preloadWindow: true,
   dir: appPath,
-  width: 240,
-  height: 500,
+  browserWindow: {
+    width: 240,
+    height: 500,
+    webPreferences: {
+      nodeIntegration: true
+      // preload: path.join(appPath, '/preload.js') // TODO: Use this insted of `nodeIntegration`
+    }
+  },
   resizable: false,
   'show-dock-icon': debug,
   tooltip: `${pkg.productName} ${pkg.version}`
@@ -35,7 +33,10 @@ mb.on('ready', () => {
   if (debug) {
     const debugWindow = new BrowserWindow({
       width: 995,
-      height: 600
+      height: 600,
+      webPreferences: {
+        nodeIntegration: true
+      }
     })
     debugWindow.loadURL(`file://${appPath}/index.html`)
     debugWindow.openDevTools()

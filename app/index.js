@@ -1,9 +1,7 @@
-const fs = require('fs')
+const { readFileSync } = require('fs')
 const path = require('path')
 const debounce = require('debounce')
-const electron = require('electron')
-const { clipboard } = electron
-const { ipcRenderer } = electron
+const { clipboard, ipcRenderer } = require('electron')
 const search = require('./search.js')
 const ImageContainer = require('./image-container.js')
 
@@ -15,7 +13,7 @@ const images = getImages()
 
 function getImages () {
   const file = path.join(__dirname, '../library.gifwit')
-  const dotGifwit = JSON.parse(fs.readFileSync(file, 'utf8'))
+  const dotGifwit = JSON.parse(readFileSync(file, 'utf8'))
   return dotGifwit.images
 }
 

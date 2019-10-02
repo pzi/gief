@@ -17,7 +17,7 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "build:base": "electron-packager . --out=_dist --arch=x64 ----electron-version=4.0.5 --overwrite --no-prune",
+    "build:base": "electron-packager . --out=_dist --arch=x64 ----electron-version=6.0.11 --overwrite --no-prune",
     "build:mac": "yarn run build:base --platform=darwin --icon=TempIcon.icns",
     "build:win": "yarn run build:base --platform=win32",
     "build": "yarn run build:mac && yarn run build:win",
@@ -31,11 +31,11 @@
   "license": "WTFPL",
   "dependencies": {
     "debounce": "^1.0.0",
-    "menubar": "^5.2.3"
+    "menubar": "^6.0.0"
   },
   "devDependencies": {
-    "electron": "^4.0.0",
-    "electron-packager": "^13.0.0",
+    "electron": "^6.0.0",
+    "electron-packager": "^14.0.0",
     "standard": "^14.3.1"
   },
   "prettier": {
