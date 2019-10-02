@@ -11,7 +11,7 @@ const searchInput = document.getElementById('search')
 
 const images = getImages()
 
-function getImages() {
+function getImages () {
   const file = path.join(__dirname, '../library.gifwit')
   const dotGifwit = JSON.parse(readFileSync(file, 'utf8'))
   return dotGifwit.images
