@@ -31,7 +31,7 @@
   "license": "WTFPL",
   "dependencies": {
     "debounce": "^1.0.0",
-    "menubar": "^6.0.0"
+    "menubar": "^8.0.1"
   },
   "devDependencies": {
     "electron": "^6.0.0",
