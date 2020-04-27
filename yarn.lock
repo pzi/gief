@@ -1535,10 +1535,10 @@ map-obj@^1.0.0, map-obj@^1.0.1:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
   integrity sha1-2TPOuSBdgr3PSIb2dCvcK03qFG0=
 
-menubar@^6.0.0:
-  version "6.0.8"
-  resolved "https://registry.yarnpkg.com/menubar/-/menubar-6.0.8.tgz#deff4b4227c73149f6316c481accb1486e7c9e7f"
-  integrity sha512-S02SLiqec8MAUbV2vsUThh0P9XPKS9mrHVN3c/6T1g+tuHwFX7TRup3xCAjIGCO+Hxs32tWmjqVh4KjBGIXudQ==
+menubar@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/menubar/-/menubar-8.0.2.tgz#551b94febc01bf5e97bf83699e7c4907fe55d693"
+  integrity sha512-yGJMHddKCDZHLkLaUNms8AEfMxYucQ0xkYpQqbQaO3P4snjPEfyqBKu8J/jBA0t3Z+KjkLP3isMVtBUhFWEnhw==
   dependencies:
     electron-positioner "^4.1.0"
 
