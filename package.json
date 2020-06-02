@@ -34,7 +34,7 @@
     "menubar": "^6.0.0"
   },
   "devDependencies": {
-    "electron": "^6.0.0",
+    "electron": "^9.0.2",
     "electron-packager": "^14.0.0",
     "standard": "^14.3.1"
   },
